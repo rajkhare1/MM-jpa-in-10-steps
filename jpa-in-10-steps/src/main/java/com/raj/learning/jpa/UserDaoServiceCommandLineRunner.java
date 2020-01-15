@@ -7,22 +7,23 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import com.raj.learning.jpa.entity.User;
-import com.raj.learning.jpa.service.UserRepository;
+import com.raj.learning.jpa.service.UserDAOService;
 
 @Component
-public class UserDaoCommandLineRunner implements CommandLineRunner{
+public class UserDaoServiceCommandLineRunner implements CommandLineRunner{
 	
-	private static final Logger log = LoggerFactory.getLogger(UserDaoCommandLineRunner.class);
+	private static final Logger log = LoggerFactory.getLogger(UserDaoServiceCommandLineRunner.class);
 	
 	@Autowired
-	private UserRepository userRepository;
+	private UserDAOService userDaoService;
 
 	@Override
 	public void run(String... args) throws Exception {
-		 User user = new User("Richa", "Admin");
-		 userRepository.save(user);
-		 
+		 User user = new User("Raj", "Admin");
+		 userDaoService.insert(user);
 		 log.info("User is created: "+user);
+		 
+		 
 		
 	}
 
